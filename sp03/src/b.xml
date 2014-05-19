@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<typeAlias alias="board" type="model.Board56Bean" />
+
+	<!-- 저장 -->
+	<insert id="b_in" parameterClass="board">
+		insert into board56(no,name,title,pass,cont,regdate)
+		values(board56_no_seq.nextval,#name#,#title#,#pass#,#cont#,sysdate)
+	</insert>
+
+	<!-- 목록 -->
+	<select id="blist" resultClass="board">
+		select * from board56 order by no desc
+	</select>
+
+	<!-- 조회수 증가 -->
+	<update id="bhit" parameterClass="int">
+		update board56 set hit=hit+1 where no=#no#
+	</update>
+
+	<!-- 내용보기+수정폼+삭제폼-->
+	<select id="bcont" parameterClass="int" resultClass="board">
+		select * from board56 where no=#no#
+	</select>
+
+    <!-- 비번 가져오기 -->
+    <select id="bpass" parameterClass="int" resultClass="board">
+      select pass from board56 where no=#no#
+    </select>
+    
+    <!-- 내용수정 -->
+    <update id="bcontUp" parameterClass="board" >
+    	update board56 
+    	   set name=#name#,title=#title#,cont=#cont#
+    	 where no=#no#
+    </update>
+    
+    <!-- 내용삭제 -->
+    <delete id="delB" parameterClass="int">
+      delete board56 where no=#no#
+    </delete>
+</sqlMap>
+
+
+
+
+
+
+
