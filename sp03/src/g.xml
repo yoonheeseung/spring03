@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<typeAlias alias="g" type="model.Guest78Bean" />
+	
+	<!-- 저장 부분 -->
+	<insert id="g_in" parameterClass="g">
+	 insert into guest78(no,name,title,pass,cont,ref,step,level2,regdate)
+	              values(guest78_no_seq.nextval,#name#,#title#,#pass#,#cont#,guest78_no_seq.nextval,0,0,sysdate)
+	</insert>
+	
+	<!-- 총게시물 수 -->
+	<select id="g_count" resultClass="int">
+	 select count(no) from guest78
+	</select>
+	
+	<!-- 목록 -->
+	<select id="glist" parameterClass="g" resultClass="g">
+		select * from 
+		(select rownum rnum, no, name, title, hit, ref, step, level2, regdate 
+		from
+		(select * from guest78 order by ref desc, level2 asc) 
+		) 
+		where rnum &gt;= #startrow# and rnum &lt;= #endrow#
+		<!-- &gt;은 ~보다 크다(>), &lt;은 ~보다 작다(<) -->
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="ghit" parameterClass="int">
+	update guest78
+	   set hit=hit+1
+	 where no=#no#
+	</update>
+	
+	<!-- 내용보기 -->
+	<select id="gcont" parameterClass="int" resultClass="g">
+		select * from guest78 where no=#no#
+	</select>
+</sqlMap>
