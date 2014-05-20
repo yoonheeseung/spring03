@@ -5,4 +5,5 @@
 <beans>  
  <!-- 스프링과 ibatis를 연결 -->
  <bean id="boardService" class="dao.BoardDAOImpl" />
+ <bean id="guestService" class="dao.GuestDAOImpl"/>
 </beans>

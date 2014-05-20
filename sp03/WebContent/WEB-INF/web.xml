@@ -36,8 +36,7 @@
 	</listener>		
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>
-		/WEB-INF/spring-oracle.xml</param-value>
+		<param-value>/WEB-INF/spring-oracle.xml</param-value>
 	</context-param>
 	<!-- spring-oracle.xml 파일 로드 -->
 	

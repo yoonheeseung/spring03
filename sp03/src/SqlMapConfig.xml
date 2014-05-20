@@ -15,6 +15,7 @@
 	</transactionManager>
 
 	<sqlMap resource="b.xml" />
+	<sqlMap resource="g.xml" />
 
 </sqlMapConfig>
 

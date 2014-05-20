@@ -16,15 +16,19 @@
 				/board_cont.do=boardAction
 				/board_edit_ok.do=boardAction
 				/board_del_ok.do=boardAction
+				
+				/guest_write.do=guestAction
+				/guest_write_ok.do=guestAction
+				/guest_list.do=guestAction
+				/guest_cont.do=guestAction
 			</value>
 		</property>
 	</bean>
 
 	<!-- Controller -->
-	<bean id="boardAction" class="action.BoardAction"
-	p:boardService-ref="boardService" />
-	<!-- p:boardService-ref="boardService" BoardAction.java 
-	  컨트롤 클래스에서 스프링의 setter DI 의존관계를 만들어야 한다. -->
+	<bean id="guestAction" class="action.GuestAction" p:guestService-ref="guestService" />
+	<bean id="boardAction" class="action.BoardAction" p:boardService-ref="boardService" />
+<!-- p:boardService-ref="boardService" BoardAction.java 컨트롤 클래스에서 스프링의 setter DI 의존관계를 만들어야 한다. -->
 	
 	
 	<!-- ViewResolver -->
