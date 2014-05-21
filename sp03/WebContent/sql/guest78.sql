@@ -17,3 +17,5 @@ create sequence guest78_no_seq
 increment by 1 start with 1 nocache;
 
 select * from guest78 order by no desc;
+
+delete guest78;

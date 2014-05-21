@@ -38,4 +38,50 @@
 	<select id="gcont" parameterClass="int" resultClass="g">
 		select * from guest78 where no=#no#
 	</select>
+	
+	<update id="g_up" parameterClass="g">
+		update guest78 
+		set name=#name#, title=#title#, cont=#cont# 
+		where no=#no#
+	</update>
+	
+	<!-- 비번 -->
+	<select id="gpass" parameterClass="int" resultClass="String">
+	 select pass from guest78 where no=#no#
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="gdel" parameterClass="int">
+	 delete guest78 where no=#no#
+	</delete>
+	
+	<!-- 수정 -->
+	<update id="upG" parameterClass="g">
+	update guest78
+	   set name=#name#,
+	       title=#title#,
+	       cont=#cont#
+	 where no=#no#
+	</update>
+	
+	<!-- 답변 레벨증가 -->
+	<update id="rb_update" parameterClass="g">
+	 update guest78 set level2=level2+1 
+	  where ref=#ref# and level2>#level2#
+	</update>
+	
+	<!-- 답변 저장 -->
+	<insert id="repG" parameterClass="g">
+	<selectKey keyProperty="no" resultClass="int" type="pre">
+	  select guest78_no_seq.nextval from dual
+	</selectKey>
+	insert into guest78(no,name,title,pass,cont,ref,step,level2,regdate)
+	             values(#no#,#name#,#title#,#pass#,#cont#,#ref#,#step#+1,#level2#+1,sysdate)
+	</insert>
 </sqlMap>
+
+
+
+
+
+

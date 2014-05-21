@@ -21,6 +21,10 @@
 				/guest_write_ok.do=guestAction
 				/guest_list.do=guestAction
 				/guest_cont.do=guestAction
+				/guest_edit_ok.do=guestAction
+				/guest_del_ok.do=guestAction
+				/guest_reply_ok.do=guestAction
+
 			</value>
 		</property>
 	</bean>

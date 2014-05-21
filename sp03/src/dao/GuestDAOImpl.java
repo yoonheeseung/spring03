@@ -51,4 +51,36 @@ public class GuestDAOImpl implements GuestDAO {
 		return (Guest78Bean) SqlMapLocator.getMapper().queryForObject("gcont",no);
 	}
 
+	@Override
+	public int updateG(Guest78Bean g) throws SQLException {
+		return (int)SqlMapLocator.getMapper().update("g_up", g);	
+	}
+
+	@Override
+	public String getPass(int no) throws SQLException {
+	     return  (String) SqlMapLocator.getMapper().queryForObject("gpass", no);
+	}
+
+	@Override
+	public int delG(int no) throws SQLException {
+		return SqlMapLocator.getMapper().delete("gdel",no);
+	}
+
+	@Override
+	public int updG(Guest78Bean g) throws SQLException {
+		return (int)SqlMapLocator.getMapper().update("upG", g);
+	}
+
+	
+	/* 답변 저장 */
+	@Override
+	public int repg(Guest78Bean rg) throws SQLException {
+	   return (int) SqlMapLocator.getMapper().insert("repG",rg);
+	}
+
+	@Override
+	public void levelup(Guest78Bean rg) throws SQLException {
+		 SqlMapLocator.getMapper().update("rb_update",rg);//답변레벨 증가
+	}
+
 }

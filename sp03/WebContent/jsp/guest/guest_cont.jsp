@@ -18,7 +18,7 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td>${gc.cont }</td>
+			<td>${cont }</td>
 		</tr>
 		<tr>
 			<th>조회수</th>
